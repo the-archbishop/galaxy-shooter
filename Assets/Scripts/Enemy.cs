@@ -27,13 +27,13 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.name == "Player")
+        if (other.tag == "Player")
         {
             // Damage the player and destroy the enemy
             // TODO: Damage the player
             Destroy(this.gameObject);
         }
-        else if (other.transform.name.Contains("Laser"))
+        else if (other.tag == "Laser")
         {
             // Destroy the laser and the enemy
             Destroy(other.transform.gameObject);
