@@ -6,6 +6,8 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject _enemyPrefab;
+    [SerializeField]
+    private GameObject _enemyContainer;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +21,8 @@ public class SpawnManager : MonoBehaviour
         {
             float randomX = Random.Range(-8.0f, 8.0f);
             Vector3 enemySpawnPosition = new Vector3(randomX, 8.0f, 0);
-            Instantiate(_enemyPrefab, enemySpawnPosition, Quaternion.identity);
+            GameObject newEnemy = Instantiate(_enemyPrefab, enemySpawnPosition, Quaternion.identity);
+            newEnemy.transform.parent = _enemyContainer.transform;
             yield return new WaitForSeconds(5.0f);
         }
     }
