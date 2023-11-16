@@ -6,8 +6,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     private float _speed = 3.5f;
-    [SerializeField]
-    private int _lives = 3;
+    public int lives = 3;
     [SerializeField]
     private GameObject _laserPrefab;
     [SerializeField]
@@ -63,9 +62,9 @@ public class Player : MonoBehaviour
 
     public void Damage()
     {
-        _lives -= 1;
+        lives -= 1;
 
-        if (_lives < 1)
+        if (lives < 1)
         {
             Destroy(this.gameObject);
         }
