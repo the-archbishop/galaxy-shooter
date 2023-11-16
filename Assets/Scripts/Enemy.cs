@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,7 +30,12 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Player")
         {
             // Damage the player and destroy the enemy
-            other.transform.GetComponent<Player>().Damage();
+            Player player = other.transform.GetComponent<Player>();
+            if (player != null)
+            {
+                player.Damage();
+            }
+            
             Destroy(this.gameObject);
         }
         else if (other.tag == "Laser")
