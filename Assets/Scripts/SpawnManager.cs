@@ -8,6 +8,7 @@ public class SpawnManager : MonoBehaviour
     private GameObject _enemyPrefab;
     [SerializeField]
     private GameObject _enemyContainer;
+    private bool _stopSpawn = false;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,7 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator SpawnRoutine()
     {
-        while (true)
+        while (_stopSpawn == false)
         {
             float randomX = Random.Range(-8.0f, 8.0f);
             Vector3 enemySpawnPosition = new Vector3(randomX, 8.0f, 0);
@@ -25,5 +26,10 @@ public class SpawnManager : MonoBehaviour
             newEnemy.transform.parent = _enemyContainer.transform;
             yield return new WaitForSeconds(5.0f);
         }
+    }
+
+    public void StopSpawn()
+    {
+        _stopSpawn = true;
     }
 }
