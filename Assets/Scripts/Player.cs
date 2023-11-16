@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(0, 0, 0);
 
         _spawnManager = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
-        if (_spawnManager)
+        if (_spawnManager == null)
         {
             Debug.LogError("Spawn Manager is NULL");
         }
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
     {
         _fireCooldown = Time.time + _fireRate;
 
-        Vector3 laserSpawnPosition = new Vector3(transform.position.x, transform.position.y + 0.8f, 0);
+        Vector3 laserSpawnPosition = new Vector3(transform.position.x, transform.position.y + 1.05f, 0);
         Instantiate(_laserPrefab, laserSpawnPosition, Quaternion.identity);
     }
 
