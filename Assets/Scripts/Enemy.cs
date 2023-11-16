@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     {
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
         
-        // TODO: Respawn at top with new random x position after off-screen
+        // Respawn at top with new random x position after off-screen
         if (transform.position.y < -5.5f)
         {
             float randomX = Random.Range(-8.0f, 8.0f);
